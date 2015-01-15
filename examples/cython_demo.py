@@ -63,10 +63,11 @@ def sample_model():
 
     # Set the proposal distribution using Hodgkin Huxley dynamics
     # TODO: Fix the hack which requires us to know the number of particles
-    N = 100
+    N = 1000
     sigmas = 0.0001*np.ones(D)
     # Set the voltage transition dynamics to be a bit noisier
     sigmas[squid_body.x_offset] = 0.25
+    
     prop = HodgkinHuxleyProposal(T, N, D, squid_body,  sigmas, t, inpt)
 
     # Set the observation model to observe only the voltage
@@ -84,7 +85,7 @@ def sample_model():
     for i in np.arange(0,T-1):
         # The interface kinda sucks. We have to tell it that
         # the first particle is always its ancestor
-        prop.sample_next(z, i, np.array([0], dtype=np.int32))
+        prop.sample_next(z, i, np.zeros((N), dtype=np.int32))#np.array([0], dtype=np.int32))
 
     # Sample observations
     for i in np.arange(0,T):

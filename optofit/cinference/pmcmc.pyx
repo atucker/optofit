@@ -104,7 +104,6 @@ cdef class HodgkinHuxleyProposal(Proposal):
                     # z[i_prev+1,n,d] = z[i_prev,n,d] + dt * self.dzdt[i_prev,n,d]
                     a = ancestors[n]
                     z[i_prev+1,n,d] = z[i_prev,a,d] + dt * self.dzdt[i_prev,a,d]
-                    # Add noise
                     z[i_prev+1,n,d] += self.sigmas[d] * rands[n,d]
 
 

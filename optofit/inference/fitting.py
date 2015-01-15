@@ -10,7 +10,7 @@ from optofit.utils.utils import as_matrix
 
 def fit_mcmc(model, N_samples=1000, callback=None, print_interval=1, geweke=False):
     """
-    Fit the parameters of hte model with MCMC
+    Fit the parameters of the model with MCMC
 
     :param model:
     :param data:
